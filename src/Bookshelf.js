@@ -27,7 +27,9 @@ Bookshelf.propTypes = {
       id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       authors: PropTypes.arrayOf(PropTypes.string),
-      coverImage: PropTypes.string
+      imageLinks: PropTypes.shape({
+        thumbnail: PropTypes.string
+      })
     })
   )
 };
