@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import * as BooksAPI from './BooksAPI';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    books: []
+  };
+
+  async componentDidMount() {
+    const books = await BooksAPI.getAll();
+    if (books) this.setState({ books });
+    //BooksAPI.getAll().then((books) => this.setState({ books }));
+  }
+
+  render() {
+    console.log(this.state.books[0]);
+    return (
+      <div className="App">
+        <div className="bookshelf">
+          <h2 className="bookshelf-title">Currently Reading</h2>
+          <ul className="books-grid">
+            {this.state.books
+              .filter((book) => book.shelf === 'currentlyReading')
+              .map((book) => (
+                <li key={book.id} className="book">
+                  <img
+                    className="book-cover"
+                    src={book.imageLinks.thumbnail}
+                    alt={book.title}
+                  />
+                  <h3 className="book-title">{book.title}</h3>
+                  <p className="book-authors">{book.authors}</p>
+                </li>
+              ))}
+          </ul>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
