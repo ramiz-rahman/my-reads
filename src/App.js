@@ -18,10 +18,25 @@ class App extends Component {
     console.log(this.state.books[0]);
     return (
       <div className="App">
+        <div className="list-books-title">
+          <h1>MyReads</h1>
+        </div>
         <Bookshelf
           title="Currently Reading"
           books={this.state.books.filter(
             (book) => book.shelf === 'currentlyReading'
+          )}
+        />
+        <Bookshelf
+          title="Want to Read"
+          books={this.state.books.filter(
+            (book) => book.shelf === 'wantToRead'
+          )}
+        />
+        <Bookshelf
+          title="Read"
+          books={this.state.books.filter(
+            (book) => book.shelf === 'read'
           )}
         />
       </div>
