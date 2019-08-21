@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
-import Book from './Book';
+import Bookshelf from './Bookshelf';
 
 class App extends Component {
   state = {
@@ -18,21 +18,12 @@ class App extends Component {
     console.log(this.state.books[0]);
     return (
       <div className="App">
-        <div className="bookshelf">
-          <h2 className="bookshelf-title">Currently Reading</h2>
-          <ul className="books-grid">
-            {this.state.books
-              .filter((book) => book.shelf === 'currentlyReading')
-              .map((book) => (
-                <Book
-                  key={book.id}
-                  title={book.title}
-                  authors={book.authors}
-                  coverImage={book.imageLinks.thumbnail}
-                />
-              ))}
-          </ul>
-        </div>
+        <Bookshelf
+          title="Currently Reading"
+          books={this.state.books.filter(
+            (book) => book.shelf === 'currentlyReading'
+          )}
+        />
       </div>
     );
   }
