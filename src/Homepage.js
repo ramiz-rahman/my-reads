@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as BooksAPI from './BooksAPI';
 import Bookshelf from './Bookshelf';
+import { Link } from 'react-router-dom';
 
 class Homepage extends Component {
   state = {
@@ -67,6 +68,9 @@ class Homepage extends Component {
           shelves={shelves}
           onMove={this.handleMove}
         />
+        <Link className="open-search" to="/search">
+          <button />
+        </Link>
       </div>
     );
   }
