@@ -14,6 +14,23 @@ class App extends Component {
     //BooksAPI.getAll().then((books) => this.setState({ books }));
   }
 
+  handleMove = (e, id, newShelf) => {
+    e.preventDefault();
+    const book = this.state.books.find((book) => book.id === id);
+    BooksAPI.update(book, newShelf).then(
+      this.setState((prevState) => {
+        return {
+          books: prevState.books.map((book) => {
+            if (book.id === id) {
+              book.shelf = newShelf;
+            }
+            return book;
+          })
+        };
+      })
+    );
+  };
+
   render() {
     console.log(this.state.books[0]);
     const shelves = Array.from(
@@ -34,6 +51,7 @@ class App extends Component {
             (book) => book.shelf === 'currentlyReading'
           )}
           shelves={shelves}
+          onMove={this.handleMove}
         />
         <Bookshelf
           title="Want to Read"
@@ -41,6 +59,7 @@ class App extends Component {
             (book) => book.shelf === 'wantToRead'
           )}
           shelves={shelves}
+          onMove={this.handleMove}
         />
         <Bookshelf
           title="Read"
@@ -48,6 +67,7 @@ class App extends Component {
             (book) => book.shelf === 'read'
           )}
           shelves={shelves}
+          onMove={this.handleMove}
         />
       </div>
     );

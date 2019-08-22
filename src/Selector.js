@@ -11,9 +11,12 @@ function camelToTitleCase(text) {
     .join(' ');
 }
 
-function Selector({ categories, defaultCategory }) {
+function Selector({ categories, defaultCategory, bookId, onMove }) {
   return (
-    <select defaultValue={defaultCategory}>
+    <select
+      defaultValue={defaultCategory}
+      onChange={(e) => onMove(e, bookId, e.target.value)}
+    >
       <option disabled>Move to ...</option>
       {categories.map((category) => (
         <option key={category} value={category}>
@@ -27,7 +30,9 @@ function Selector({ categories, defaultCategory }) {
 
 Selector.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.string),
-  defaultCategory: PropTypes.string
+  defaultCategory: PropTypes.string,
+  bookId: PropTypes.string,
+  onMove: PropTypes.func
 };
 
 export default Selector;

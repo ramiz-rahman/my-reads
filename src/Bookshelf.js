@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Book from './Book';
 
-function Bookshelf({ title, books, shelves }) {
+function Bookshelf({ title, books, shelves, onMove }) {
   return (
     <div className="bookshelf">
       <h2 className="bookshelf-title">{title}</h2>
@@ -10,11 +10,13 @@ function Bookshelf({ title, books, shelves }) {
         {books.map((book) => (
           <Book
             key={book.id}
+            id={book.id}
             title={book.title}
             authors={book.authors}
             coverImage={book.imageLinks.thumbnail}
             shelf={book.shelf}
             shelves={shelves}
+            onMove={onMove}
           />
         ))}
       </ul>
@@ -34,7 +36,8 @@ Bookshelf.propTypes = {
       })
     })
   ),
-  shelves: PropTypes.arrayOf(PropTypes.string)
+  shelves: PropTypes.arrayOf(PropTypes.string),
+  onMove: PropTypes.func
 };
 
 export default Bookshelf;
