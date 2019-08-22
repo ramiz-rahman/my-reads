@@ -5,7 +5,7 @@ import Book from './Book';
 function Bookshelf({ title, books, shelves, onMove }) {
   return (
     <div className="bookshelf">
-      <h2 className="bookshelf-title">{title}</h2>
+      {title && <h2 className="bookshelf-title">{title}</h2>}
       <ul className="books-grid">
         {books.map((book) => (
           <Book
@@ -25,7 +25,7 @@ function Bookshelf({ title, books, shelves, onMove }) {
 }
 
 Bookshelf.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   books: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
