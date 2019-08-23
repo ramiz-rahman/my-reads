@@ -13,7 +13,9 @@ function Bookshelf({ title, books, shelves, onMove }) {
             id={book.id}
             title={book.title}
             authors={book.authors}
-            coverImage={book.imageLinks.thumbnail}
+            coverImage={
+              book.imageLinks ? book.imageLinks.thumbnail : ''
+            }
             shelf={book.shelf}
             shelves={shelves}
             onMove={onMove}

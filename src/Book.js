@@ -18,7 +18,7 @@ function Book({
         <div className="book-shelf-changer">
           <Selector
             categories={shelves}
-            defaultCategory={shelf}
+            defaultCategory={shelves.includes(shelf) ? shelf : 'none'}
             bookId={id}
             onMove={onMove}
           />
