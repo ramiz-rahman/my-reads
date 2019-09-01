@@ -29,10 +29,6 @@ class SearchPage extends Component {
     );
   };
 
-  handleMove = (id, newShelf) => {
-    this.setState((prevState) => prevState.books);
-  };
-
   render() {
     return (
       <div>
@@ -45,7 +41,6 @@ class SearchPage extends Component {
             <Bookshelf
               books={this.state.books}
               shelves={this.state.shelves}
-              onMove={this.handleMove}
             />
           ) : (
             <h2>No books found</h2>

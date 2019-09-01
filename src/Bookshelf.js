@@ -11,12 +11,6 @@ function Bookshelf({ title, books, shelves, onMove }) {
           <Book
             key={book.id}
             id={book.id}
-            title={book.title}
-            authors={book.authors}
-            coverImage={
-              book.imageLinks ? book.imageLinks.thumbnail : ''
-            }
-            shelf={book.shelf}
             shelves={shelves}
             onMove={onMove}
           />
@@ -30,13 +24,8 @@ Bookshelf.propTypes = {
   title: PropTypes.string,
   books: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      authors: PropTypes.arrayOf(PropTypes.string),
-      imageLinks: PropTypes.shape({
-        thumbnail: PropTypes.string
-      })
-    })
+      id: PropTypes.string.isRequired
+    }).isRequired
   ),
   shelves: PropTypes.arrayOf(PropTypes.string),
   onMove: PropTypes.func

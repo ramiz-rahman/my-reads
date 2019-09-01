@@ -36,9 +36,10 @@ class Book extends Component {
     const onMove = this.props.onMove;
     e.preventDefault();
     if (this.state.id !== '') {
-      BooksAPI.update(this.state, newShelf).then(
-        onMove && onMove(this.state.id, newShelf)
-      );
+      BooksAPI.update(this.state, newShelf).then(() => {
+        onMove && onMove(this.state.id, newShelf);
+        this.setState({ shelf: newShelf });
+      });
     }
   };
 
@@ -66,10 +67,6 @@ class Book extends Component {
 
 Book.propTypes = {
   id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  authors: PropTypes.arrayOf(PropTypes.string),
-  coverImage: PropTypes.string,
-  shelf: PropTypes.string,
   shelves: PropTypes.arrayOf(PropTypes.string),
   onMove: PropTypes.func
 };
