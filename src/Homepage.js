@@ -5,40 +5,30 @@ import { Link } from 'react-router-dom';
 
 class Homepage extends Component {
   state = {
-    books: []
+    books: [],
+    shelves: ['currentlyReading', 'wantToRead', 'read', 'none']
   };
 
   async componentDidMount() {
     const books = await BooksAPI.getAll();
     if (books) this.setState({ books });
-    //BooksAPI.getAll().then((books) => this.setState({ books }));
   }
 
-  handleMove = (e, id, newShelf) => {
-    e.preventDefault();
-    const book = this.state.books.find((book) => book.id === id);
-    BooksAPI.update(book, newShelf).then(
-      this.setState((prevState) => {
-        return {
-          books: prevState.books.map((book) => {
-            if (book.id === id) {
-              book.shelf = newShelf;
-            }
-            return book;
-          })
-        };
-      })
-    );
+  handleMove = (id, newShelf) => {
+    this.setState((prevState) => {
+      return {
+        books: prevState.books.map((book) => {
+          if (book.id === id) {
+            book.shelf = newShelf;
+          }
+          return book;
+        })
+      };
+    });
   };
 
   render() {
-    const shelves = Array.from(
-      this.state.books.reduce((shelves, book) => {
-        shelves.add(book.shelf);
-        return shelves;
-      }, new Set())
-    );
-
+    const shelves = this.state.shelves;
     return (
       <div>
         <div className="list-books-title">

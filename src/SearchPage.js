@@ -5,8 +5,9 @@ import SearchBar from './SearchBar';
 
 class SearchPage extends Component {
   state = {
-    query: '',
-    books: []
+    query: 'a',
+    books: [],
+    shelves: ['currentlyReading', 'wantToRead', 'read', 'none']
   };
 
   componentDidMount() {
@@ -28,10 +29,8 @@ class SearchPage extends Component {
     );
   };
 
-  handleMove = (e, id, newShelf) => {
-    e.preventDefault();
-    const book = this.state.books.find((book) => book.id === id);
-    BooksAPI.update(book, newShelf);
+  handleMove = (id, newShelf) => {
+    this.setState((prevState) => prevState.books);
   };
 
   render() {
@@ -39,13 +38,13 @@ class SearchPage extends Component {
       <div>
         <SearchBar
           onSearch={this.handleSearch}
-          value={this.state.value}
+          value={this.state.query}
         />
         <div className="search-books-results">
           {this.state.books.length !== 0 ? (
             <Bookshelf
               books={this.state.books}
-              shelves={['currentlyReading', 'wantToRead', 'read']}
+              shelves={this.state.shelves}
               onMove={this.handleMove}
             />
           ) : (

@@ -1,21 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { camelToTitleCase } from './Utils';
 
-function camelToTitleCase(text) {
-  const words = text
-    .replace(/([A-Z])/g, ' $1')
-    .trim()
-    .split(' ');
-  return words
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-}
-
-function Selector({ categories, defaultCategory, bookId, onMove }) {
+function Selector({ categories, defaultCategory, onMove }) {
   return (
     <select
-      defaultValue={defaultCategory}
-      onChange={(e) => onMove(e, bookId, e.target.value)}
+      value={defaultCategory}
+      onChange={(e) => onMove(e, e.target.value)}
     >
       <option disabled>Move to ...</option>
       {categories.map((category) => (
@@ -23,7 +14,6 @@ function Selector({ categories, defaultCategory, bookId, onMove }) {
           {camelToTitleCase(category)}
         </option>
       ))}
-      <option value="none">None</option>
     </select>
   );
 }
@@ -31,7 +21,6 @@ function Selector({ categories, defaultCategory, bookId, onMove }) {
 Selector.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.string),
   defaultCategory: PropTypes.string,
-  bookId: PropTypes.string,
   onMove: PropTypes.func
 };
 
