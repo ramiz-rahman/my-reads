@@ -5,7 +5,7 @@ import SearchBar from './SearchBar';
 
 class SearchPage extends Component {
   state = {
-    query: 'a',
+    query: '',
     books: [],
     shelves: ['currentlyReading', 'wantToRead', 'read', 'none']
   };
@@ -43,7 +43,9 @@ class SearchPage extends Component {
               shelves={this.state.shelves}
             />
           ) : (
-            <h2>No books found</h2>
+            <h2>
+              No Books Found. Search for a category. (e.g. Poetry)
+            </h2>
           )}
         </div>
       </div>
