@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as BooksAPI from './BooksAPI';
 import Bookshelf from './Bookshelf';
 import SearchBar from './SearchBar';
+import { debounce } from 'lodash';
 
 class SearchPage extends Component {
   state = {
@@ -10,23 +11,20 @@ class SearchPage extends Component {
     shelves: ['currentlyReading', 'wantToRead', 'read', 'none']
   };
 
-  componentDidMount() {
-    BooksAPI.search(this.state.query).then((books) =>
-      books && Array.isArray(books)
-        ? this.setState({ books })
-        : this.setState({ books: [] })
-    );
-  }
-
-  handleSearch = (e) => {
-    e.preventDefault();
-    const query = e.target.value;
-    this.setState({ query });
+  _getBookRaw = (query) => {
     BooksAPI.search(query).then((books) =>
       books && Array.isArray(books)
         ? this.setState({ books })
         : this.setState({ books: [] })
     );
+  };
+
+  _getBook = debounce(this._getBookRaw, 300);
+
+  handleSearch = (e) => {
+    e.preventDefault();
+    const query = e.target.value;
+    this.setState({ query }, this._getBook(query));
   };
 
   render() {

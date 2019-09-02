@@ -21,7 +21,6 @@ class Book extends Component {
         ? book.imageLinks.thumbnail
         : '';
       const shelf = book.shelf;
-
       this.setState({
         id,
         title,
