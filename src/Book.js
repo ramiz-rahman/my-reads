@@ -9,7 +9,8 @@ class Book extends Component {
     title: '',
     authors: '',
     coverImage: '',
-    shelf: ''
+    shelf: '',
+    dragging: false
   };
 
   componentDidMount() {
@@ -42,12 +43,35 @@ class Book extends Component {
     }
   };
 
+  handleDragStart = (e, id) => {
+    e.dataTransfer.setData('text/plain', id);
+    e.dataTransfer.dropEffect = 'move';
+    this.setState({ dragging: true });
+  };
+
+  handleDragEnd = () => {
+    this.setState({ dragging: false });
+  };
+
   render() {
     const { id, title, authors, coverImage, shelf } = this.state;
+    let classNames = ['book'];
+    this.state.dragging && classNames.push('dragging');
+    classNames = classNames.join(' ');
     return (
-      <div className="book">
+      <div
+        draggable
+        className={classNames}
+        onDragStart={(e) => this.handleDragStart(e, id)}
+        onDragEnd={this.handleDragEnd}
+      >
         <div className="book-top">
-          <img className="book-cover" src={coverImage} alt={title} />
+          <img
+            className="book-cover"
+            src={coverImage}
+            alt={title}
+            draggable="false"
+          />
           <div className="book-shelf-changer">
             <Selector
               categories={this.props.shelves}

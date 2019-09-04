@@ -27,8 +27,26 @@ class Homepage extends Component {
     });
   };
 
+  handleDrop = (e, shelf) => {
+    const id = e.dataTransfer.getData('text');
+    this.handleMove(id, shelf);
+    BooksAPI.update(
+      this.state.books.find((book) => book.id === id),
+      shelf
+    );
+  };
+
   render() {
     const shelves = this.state.shelves;
+    const currentlyReading = this.state.books.filter(
+      (book) => book.shelf === 'currentlyReading'
+    );
+    const wantToRead = this.state.books.filter(
+      (book) => book.shelf === 'wantToRead'
+    );
+    const read = this.state.books.filter(
+      (book) => book.shelf === 'read'
+    );
     return (
       <div>
         <div className="list-books-title">
@@ -36,27 +54,27 @@ class Homepage extends Component {
         </div>
         <Bookshelf
           title="Currently Reading"
-          books={this.state.books.filter(
-            (book) => book.shelf === 'currentlyReading'
-          )}
+          books={currentlyReading}
+          shelfName="currentlyReading"
           shelves={shelves}
           onMove={this.handleMove}
+          onDrop={this.handleDrop}
         />
         <Bookshelf
           title="Want to Read"
-          books={this.state.books.filter(
-            (book) => book.shelf === 'wantToRead'
-          )}
+          books={wantToRead}
+          shelfName="wantToRead"
           shelves={shelves}
           onMove={this.handleMove}
+          onDrop={this.handleDrop}
         />
         <Bookshelf
           title="Read"
-          books={this.state.books.filter(
-            (book) => book.shelf === 'read'
-          )}
+          books={read}
+          shelfName="read"
           shelves={shelves}
           onMove={this.handleMove}
+          onDrop={this.handleDrop}
         />
         <Link className="open-search" to="/search">
           <button />
