@@ -1,41 +1,63 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Book from './Book';
 
-function Bookshelf({
-  title,
-  books,
-  shelves,
-  onMove,
-  onDrop,
-  shelfName
-}) {
-  return (
-    <div
-      className="bookshelf"
-      onDragOver={(e) => e.preventDefault()}
-      onDrop={(e) => onDrop(e, shelfName)}
-    >
-      {title && <h2 className="bookshelf-title">{title}</h2>}
-      <ul className="books-grid">
-        {books.map((book) => (
-          <Book
-            key={book.id}
-            id={book.id}
-            shelves={shelves}
-            onMove={onMove}
-          />
-        ))}
-      </ul>
-      {/* <div
-        style={{ height: '300px', backgroundColor: '#F00' }}
-        onDragOver={(e) => {
-          e.preventDefault();
-        }}
-        onDrop={(e) => handleDrop(e)}
-      /> */}
-    </div>
-  );
+class Bookshelf extends Component {
+  state = { dropArea: false };
+
+  handleDragOver = (e) => {
+    e.preventDefault();
+    this.setState({ dropArea: true });
+  };
+
+  handleDragLeave = (e) => {
+    e.preventDefault();
+    this.setState({ dropArea: false });
+  };
+
+  _getDropAreaClass = () => {
+    let classes = ['drop-area', 'hidden'];
+    if (this.state.dropArea) classes.pop();
+    return classes.join(' ');
+  };
+
+  render() {
+    const {
+      title,
+      books,
+      shelves,
+      onMove,
+      onDrop,
+      shelfName
+    } = this.props;
+
+    let dropAreaClass = this._getDropAreaClass();
+    return (
+      <div className="bookshelf" onDragOver={this.handleDragOver}>
+        {title && <h2 className="bookshelf-title">{title}</h2>}
+        <div
+          className={dropAreaClass}
+          onDragLeave={(e) => this.handleDragLeave(e)}
+          onDrop={(e) => {
+            this.handleDragLeave(e);
+            onDrop(e, shelfName);
+          }}
+        >
+          <p>Move book to this shelf!</p>
+        </div>
+        <ul className="books-grid">
+          {books.map((book) => (
+            <Book
+              key={book.id}
+              id={book.id}
+              shelves={shelves}
+              onMove={onMove}
+            />
+          ))}
+        </ul>
+      </div>
+    );
+  }
 }
 
 Bookshelf.propTypes = {

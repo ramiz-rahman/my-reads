@@ -48,7 +48,7 @@ class Homepage extends Component {
       (book) => book.shelf === 'read'
     );
     return (
-      <div>
+      <div className="page-content">
         <div className="list-books-title">
           <h1>MyReads</h1>
         </div>
