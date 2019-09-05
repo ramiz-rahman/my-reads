@@ -34,7 +34,8 @@ class Bookshelf extends Component {
       shelves,
       onMove,
       onDrop,
-      shelfName
+      shelfName,
+      dnd
     } = this.props;
 
     let dropAreaClass = this._getDropAreaClass();
@@ -62,6 +63,7 @@ class Bookshelf extends Component {
               id={book.id}
               shelves={shelves}
               onMove={onMove}
+              draggable={dnd}
             />
           ))}
         </ul>
@@ -79,6 +81,7 @@ Bookshelf.propTypes = {
   ),
   shelfName: PropTypes.string,
   shelves: PropTypes.arrayOf(PropTypes.string),
+  dnd: PropTypes.bool,
   onMove: PropTypes.func,
   onDrop: PropTypes.func
 };

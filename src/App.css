@@ -164,6 +164,9 @@ button:active {
 .book {
   width: 192px;
   padding: 10px;
+}
+
+.book[draggable] {
   cursor: grab;
 }
 
@@ -229,6 +232,7 @@ button:active {
 }
 
 /* Drag & Drop */
+
 .dragging {
   opacity: 0.25;
   cursor: grabbing;

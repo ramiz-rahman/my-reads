@@ -57,6 +57,7 @@ class Homepage extends Component {
           books={currentlyReading}
           shelfName="currentlyReading"
           shelves={shelves}
+          dnd={true}
           onMove={this.handleMove}
           onDrop={this.handleDrop}
         />
@@ -65,6 +66,7 @@ class Homepage extends Component {
           books={wantToRead}
           shelfName="wantToRead"
           shelves={shelves}
+          dnd={true}
           onMove={this.handleMove}
           onDrop={this.handleDrop}
         />
@@ -73,6 +75,7 @@ class Homepage extends Component {
           books={read}
           shelfName="read"
           shelves={shelves}
+          dnd={true}
           onMove={this.handleMove}
           onDrop={this.handleDrop}
         />

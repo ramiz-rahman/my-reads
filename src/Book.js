@@ -60,7 +60,7 @@ class Book extends Component {
     classNames = classNames.join(' ');
     return (
       <div
-        draggable
+        draggable={this.props.draggable}
         className={classNames}
         onDragStart={(e) => this.handleDragStart(e, id)}
         onDragEnd={this.handleDragEnd}
