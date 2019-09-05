@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/my-reads/static/css/main.400c40cb.chunk.css",
-    "main.js": "/my-reads/static/js/main.16fa4d4e.chunk.js",
-    "main.js.map": "/my-reads/static/js/main.16fa4d4e.chunk.js.map",
+    "main.js": "/my-reads/static/js/main.023ffa38.chunk.js",
+    "main.js.map": "/my-reads/static/js/main.023ffa38.chunk.js.map",
     "runtime~main.js": "/my-reads/static/js/runtime~main.98d07dc8.js",
     "runtime~main.js.map": "/my-reads/static/js/runtime~main.98d07dc8.js.map",
-    "static/js/2.95a35076.chunk.js": "/my-reads/static/js/2.95a35076.chunk.js",
-    "static/js/2.95a35076.chunk.js.map": "/my-reads/static/js/2.95a35076.chunk.js.map",
+    "static/js/2.ca82a2e9.chunk.js": "/my-reads/static/js/2.ca82a2e9.chunk.js",
+    "static/js/2.ca82a2e9.chunk.js.map": "/my-reads/static/js/2.ca82a2e9.chunk.js.map",
     "index.html": "/my-reads/index.html",
-    "precache-manifest.a30aa016b1128163b9f844fd103f4573.js": "/my-reads/precache-manifest.a30aa016b1128163b9f844fd103f4573.js",
+    "precache-manifest.a49d85e5f6d50ecf339d1c78add89d63.js": "/my-reads/precache-manifest.a49d85e5f6d50ecf339d1c78add89d63.js",
     "service-worker.js": "/my-reads/service-worker.js",
     "static/css/main.400c40cb.chunk.css.map": "/my-reads/static/css/main.400c40cb.chunk.css.map",
     "static/media/App.css": "/my-reads/static/media/arrow-drop-down.be45c158.svg"
