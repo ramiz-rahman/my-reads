@@ -22,7 +22,7 @@ Click on the option icon located at the bottom right of a book to view a list of
 
 You can also drag a book and drop it to another shelf in order to move it. This is implemented using the native HTML Drag and Drop API. 
 
-[Imgur](https://i.imgur.com/3w0dx6g.gifv)
+![](dnd.gif)
 
 ### Search 
 
@@ -34,7 +34,7 @@ Click on the **plus** floating action button to navigate to the search page. Typ
 
 Just like in the homepage, click on the option icon located at the bottom right of a book to view a list of available shelves. Use it to move the book into the corresponding bookshelf in the homescreen. When a book is already in a bookshelf, the corresponding value will be selected in the control. 
 
-![Imgur](https://i.imgur.com/U6e1H9y.gifv)
+![](search_and_move.gif)
 
 
 ## Installation and Implementation 
