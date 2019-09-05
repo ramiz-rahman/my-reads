@@ -7,17 +7,23 @@ class Bookshelf extends Component {
 
   handleDragOver = (e) => {
     e.preventDefault();
+  };
+
+  handleDragEnter = (e) => {
+    e.preventDefault();
     this.setState({ dropArea: true });
   };
 
   handleDragLeave = (e) => {
     e.preventDefault();
-    this.setState({ dropArea: false });
+    this.setState((prevState) => {
+      return { dropArea: false };
+    });
   };
 
   _getDropAreaClass = () => {
-    let classes = ['drop-area', 'hidden'];
-    if (this.state.dropArea) classes.pop();
+    let classes = ['drop-area'];
+    if (!this.state.dropArea) classes.push('hidden');
     return classes.join(' ');
   };
 
@@ -33,17 +39,21 @@ class Bookshelf extends Component {
 
     let dropAreaClass = this._getDropAreaClass();
     return (
-      <div className="bookshelf" onDragOver={this.handleDragOver}>
+      <div
+        className="bookshelf"
+        onDragEnter={this.handleDragEnter}
+        onDragOver={this.handleDragOver}
+        onDrop={(e) => {
+          this.handleDragLeave(e);
+          onDrop(e, shelfName);
+        }}
+      >
         {title && <h2 className="bookshelf-title">{title}</h2>}
         <div
           className={dropAreaClass}
           onDragLeave={(e) => this.handleDragLeave(e)}
-          onDrop={(e) => {
-            this.handleDragLeave(e);
-            onDrop(e, shelfName);
-          }}
         >
-          <p>Move book to this shelf!</p>
+          <p>Move book to shelf: {title}</p>
         </div>
         <ul className="books-grid">
           {books.map((book) => (
