@@ -39,6 +39,12 @@ Just like in the homepage, click on the option icon located at the bottom right 
 
 ## Installation and Implementation 
 
+To locally install and run this app, clone this repo and install the dependencies
+```
+$ git clone https://github.com/ramiz-rahman/my-reads.git
+$ cd my-reads
+$ npm install
+```
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### Available Scripts
@@ -107,3 +113,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 #### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## License
+
+My Reads is released under the [MIT License](https://choosealicense.com/licenses/mit/)
