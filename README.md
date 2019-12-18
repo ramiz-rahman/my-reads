@@ -1,50 +1,55 @@
 # MyReads
 
-This is a bookshelf app that allows you to select and categorize books that you have read, are currently reading, or want to read. The project is implemented entirely in React and makes use of the Udacity Books API (https://reactnd-books-api.udacity.com) server
+This is a bookshelf app that allows you to select and categorize books that you have read, are currently reading, or want to read. The project is implemented entirely in React and makes use of the [Udacity Books API](https://reactnd-books-api.udacity.com) server.
 
-## App Functionality 
+This app is deployed with Netlify and can be accessed here: [my-reads.ramizrahman.com](https://my-reads.ramizrahman.com/). I hope you have fun playing with it.
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4a6d4020-64f6-4394-9afa-80e3ae7817a5/deploy-status)](https://app.netlify.com/sites/ramizrahman-myreads/deploys)
+
+## App Functionality
 
 It's a single page app (SPA) that makes use of React Router to navigate between two pages - home and search.
 
 ### Homepage - Bookshelves
 
-The homepage consists of three shelves - **Currently Reading**, **Want to Read**, and **Read**. Books in a bookshelf are arranged in a grid that is implented using CSS Grids. 
+The homepage consists of three shelves - **Currently Reading**, **Want to Read**, and **Read**. Books in a bookshelf are arranged in a grid that is implemented using CSS Grids.
 
 ![Currently Reading](https://i.imgur.com/qxpNNsi.png)
 
-#### Switch Shelves 
+#### Switch Shelves
 
-Click on the option icon located at the bottom right of a book to view a list of available shelfs. The default value for the control is the current shelf the book is in. Click on the name in the list to move the book to the respective shelf. Clicking on *None* will remove the book from the homepage. 
+Click on the option icon located at the bottom right of a book to view a list of available shelves. The default value for the control is the current shelf the book is in. Click on the name in the list to move the book to the respective shelf. Clicking on _None_ will remove the book from the homepage.
 
-![Imgur](https://i.imgur.com/rCkCv8N.png)
+![switch shelves](https://i.imgur.com/rCkCv8N.png)
 
 #### Drag & Drop
 
-You can also drag a book and drop it to another shelf in order to move it. This is implemented using the native HTML Drag and Drop API. 
+You can also drag a book and drop it to another shelf in order to move it. This is implemented using the native HTML Drag and Drop API.
 
-![](dnd.gif)
+![drag and drop](dnd.gif)
 
-### Search 
+### Search
 
-Click on the **plus** floating action button to navigate to the search page. Type in the name of a topic or category (e.g. poetry, history, artificial intelligence, web development, react) and a list of books belonging to that cateogry will be fetched from the server. The API call is debounced using *lodash debounce* in order to improve performance. Clicking on the back arrow will navigate you back to the homepage. 
+Click on the **plus** floating action button to navigate to the search page. Type in the name of a topic or category (e.g. poetry, history, artificial intelligence, web development, react) and a list of books belonging to that category will be fetched from the server. The API call is debounced using _lodash debounce_ in order to improve performance. Clicking on the back arrow will navigate you back to the homepage.
 
-![Imgur](https://i.imgur.com/SS5CaKX.png)
+![search](https://i.imgur.com/SS5CaKX.png)
 
-#### Add book to shelf 
+#### Add book to shelf
 
-Just like in the homepage, click on the option icon located at the bottom right of a book to view a list of available shelves. Use it to move the book into the corresponding bookshelf in the homescreen. When a book is already in a bookshelf, the corresponding value will be selected in the control. 
+Just like in the homepage, click on the option icon located at the bottom right of a book to view a list of available shelves. Use it to move the book into the corresponding bookshelf in the home screen. When a book is already in a bookshelf, the corresponding value will be selected in the control.
 
-![](search_and_move.gif)
+![search and move](search_and_move.gif)
 
-
-## Installation and Implementation 
+## Installation and Implementation
 
 To locally install and run this app, clone this repo and install the dependencies
+
 ```
 $ git clone https://github.com/ramiz-rahman/my-reads.git
 $ cd my-reads
 $ npm install
 ```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### Available Scripts
